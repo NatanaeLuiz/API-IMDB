@@ -13,5 +13,5 @@ Desafio:
 
 Resultado:
 <div>
-![image](https://user-images.githubusercontent.com/17768272/228108356-36f50266-8d2f-457b-86a9-c193e32fe852.png)
+<img src="https://user-images.githubusercontent.com/17768272/228108356-36f50266-8d2f-457b-86a9-c193e32fe852.png">
 </div>
