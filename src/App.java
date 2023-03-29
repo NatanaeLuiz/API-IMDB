@@ -1,4 +1,6 @@
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -24,8 +26,18 @@ public class App {
         List<Map<String, String>> listFilmes = parser.parse(body);
         
         for (Map<String, String> filme : listFilmes) {
-            System.out.println("\u001b[1mTitulo:\u001b[m " + filme.get("title"));
-            System.out.println("\u001b[1mImagem:\u001b[m " + filme.get("image"));
+            
+            String urlImagem = filme.get("image");
+            String titulo = filme.get("title");
+
+            String nomeArquivo = titulo + ".png";
+            InputStream inputStream = new URL(urlImagem).openStream();
+
+            GeradorDeFiguras geradorDeFiguras = new GeradorDeFiguras();
+            
+
+            System.out.println("\u001b[1mTitulo:\u001b[m " + titulo);
+            System.out.println("\u001b[1mImagem:\u001b[m " + urlImagem);
             System.out.println("\u001b[1mAno de lançamento:\u001b[m " + filme.get("year"));
             System.out.print("\u001b[97m\u001b[38;5;32mClassificação:\u001b[m ");
             double classificacao = Double.parseDouble(filme.get("imDbRating"));
@@ -33,6 +45,7 @@ public class App {
                 System.out.print("⭐");
             }
 
+            geradorDeFiguras.cria(inputStream, (int) classificacao, nomeArquivo);
             System.out.printf("  " + filme.get("imDbRating"));
             System.out.println("\n");
         }
