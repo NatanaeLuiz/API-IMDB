@@ -10,7 +10,7 @@ import extratores.ExtratorDeConteudoDoIMDB;
 import model.Conteudo;
 import stickers.GeradorDeFiguras;
 
-public class App {
+public class AppApiConteudo {
     public static void main(String[] args) throws Exception {
 
         ExtratorDeConteudo extrator = new ExtratorDeConteudoDoIMDB();;
