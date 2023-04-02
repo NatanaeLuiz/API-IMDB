@@ -1,3 +1,4 @@
+package stickers;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -10,7 +11,7 @@ import javax.imageio.ImageIO;
 
 public class GeradorDeFiguras {
     
-    public void cria(InputStream inputStream, int qntStars, String nomeArquivo) throws Exception{
+    public void cria(InputStream inputStream, Double qntStars, String nomeArquivo, int opcao) throws Exception{
 
         
         BufferedImage imgOrigin = ImageIO.read(inputStream);
@@ -35,13 +36,16 @@ public class GeradorDeFiguras {
         graphics.setStroke(outlineStroke);
 
         //Escreve uma frase na nova IMAGEM
-        int divisorStar = largura / qntStars;
-        int proximaStar = 0;
-        for(int i = 0; i < qntStars; i++){
-            graphics.drawString("⭐",  proximaStar, novaAltura - 100);
-            proximaStar = proximaStar + divisorStar;
+        if (opcao == 1) {
+            int divisorStar = largura / qntStars.intValue();
+            int proximaStar = 0;
+            for(int i = 0; i < qntStars; i++){
+                graphics.drawString("⭐",  proximaStar, novaAltura - 100);
+                proximaStar = proximaStar + divisorStar;
+            }
+        } else {
+            graphics.drawString("texto", largura / 2, novaAltura - 100);
         }
-       
 
         ImageIO.write(novaImg, "png", new File("saida/" + nomeArquivo));
 
