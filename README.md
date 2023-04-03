@@ -1,4 +1,5 @@
-# API-IMDB
+# API-IMDB 
+[![NPM](https://img.shields.io/npm/l/react)](https://raw.githubusercontent.com/lumedeirosn/imersao-2-spring/main/LICENSE) 
 
 <h1>Imersão Java - Alura</h1>
 
