@@ -7,6 +7,7 @@ import client.ClienteHttp;
 import extratores.ExtratorDeConteudo;
 import extratores.ExtratorDeConteudoDaNasa;
 import extratores.ExtratorDeConteudoDoIMDB;
+import extratores.ExtratorDeLinguagens;
 import model.Conteudo;
 import stickers.GeradorDeFiguras;
 
@@ -31,9 +32,11 @@ public class AppApiConteudo {
         } else if(opcao == 2) {
             url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=2023-02-01&end_date=2023-02-02";
             extrator = new ExtratorDeConteudoDaNasa();
-        } else 
-            url = "http://localhost:8080/languages";
-        
+        } else  {
+            //url = "http://localhost:8080/languages";
+            url = "https://apinatan-linguagens.fly.dev/linguagens";
+            extrator = new ExtratorDeLinguagens();
+        }        
         var http = new ClienteHttp();
         String json = http.buscaDados(url);
 
